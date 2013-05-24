@@ -1,5 +1,14 @@
+// $black: #000;
+// $bodyBackground: $black;
 // $btnBackground: #00f;
+
 @import "bootstrap";
+
+body {
+  font-family: 'Oxygen', sans-serif;
+  // background: image-url("classy_fabric.png") #2B2C2C;
+  // color: #fff;
+}
 
 #page {
   max-width: 820px;
@@ -17,7 +26,6 @@ button {
 
 table {
   @extend .table, .table-striped, .table-hover;
-
 }
 
 td.actions a {
@@ -47,8 +55,13 @@ input[type="submit"] {
 nav ul {
   @extend .nav, .nav-pills;
 }
+.site-title,
+.blog-title {
+  margin-bottom: 0;
+}
 
-.site-description {
+.site-description,
+.blog-description {
   font-size: 1em;
   margin-top: 0;
 }

@@ -26,7 +26,7 @@ class BlogsController < ApplicationController
     @posts = @blog.posts
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'blog' }
       format.json { render json: @blog }
     end
   end
