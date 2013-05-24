@@ -21,6 +21,16 @@ class BlogsController < ApplicationController
     end
   end
 
+  def show_posts
+    @blog  = Blog.find_by_subdomain!(request.subdomain)
+    @posts = @blog.posts
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @blog }
+    end
+  end
+
   # GET /blogs/new
   # GET /blogs/new.json
   def new

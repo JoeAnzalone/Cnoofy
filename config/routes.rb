@@ -9,7 +9,7 @@ Cnoofy::Application.routes.draw do
 
   resources :posts
 
-  match '/' => 'blogs#show', :constraints => { :subdomain => /.+/ }
+  match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }
 
   root :to => 'posts#following'
 
