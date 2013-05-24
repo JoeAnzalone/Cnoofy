@@ -1,0 +1,55 @@
+// $btnBackground: #00f;
+@import "bootstrap";
+
+#page {
+  max-width: 820px;
+  display: block;
+  border: 2px solid #A7FF49;
+  border-radius: 2em;
+  padding: 1em;
+  margin: 1em auto;
+}
+
+input[type="submit"],
+button {
+  @extend .btn;
+}
+
+table {
+  @extend .table, .table-striped, .table-hover;
+
+}
+
+td.actions a {
+  @extend .btn;
+}
+
+td.actions .destroy {
+  @extend .btn-danger;
+}
+
+.new {
+  @extend .btn, .btn-primary;
+}
+
+input[type="submit"] {
+  @extend .btn-primary;
+}
+
+.alert:empty {
+  display: none;
+}
+
+.show-link,
+.back {
+  @extend .btn, .btn-info;
+}
+
+nav ul {
+  @extend .nav, .nav-pills;
+}
+
+.site-description {
+  font-size: 1em;
+  margin-top: 0;
+}

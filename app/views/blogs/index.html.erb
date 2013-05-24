@@ -15,13 +15,13 @@
     <td><%= blog.subdomain %></td>
     <td><%= blog.title %></td>
     <td><%= blog.description %></td>
-    <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="actions">
+      <%= link_to 'Show', blog, :class => 'show' %>
+      <%= link_to 'Edit', edit_blog_path(blog), :class => 'edit' %>
+      <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'New Blog', new_blog_path, :class => 'new blog' %>

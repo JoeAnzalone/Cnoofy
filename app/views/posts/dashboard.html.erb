@@ -15,13 +15,13 @@
     <td><%= post.title %></td>
     <td><%= post.body %></td>
     <td><%= post.tags %></td>
-    <td><%= link_to 'Show', [post.blog, post] %></td>
-    <td><%= link_to 'Edit', edit_blog_post_path(post.blog, post) %></td>
-    <td><%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td class="actions">
+      <%= link_to 'Show', [post.blog, post], :class => 'show' %>
+      <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %>
+      <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+    </td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Post', new_blog_post_path(:blog_id => current_user.blogs.first) %>
+<%= link_to 'New Post', new_blog_post_path(:blog_id => current_user.blogs.first), :class => 'new post' %>
