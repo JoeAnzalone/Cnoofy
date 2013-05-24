@@ -11,8 +11,15 @@ Cnoofy::Application.routes.draw do
 
   match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }
 
-  root :to => 'posts#following'
+  authenticated :user do
+    root :to => "posts#following"
+  end
 
+  devise_scope :user do
+    get '/', :to => 'devise/registrations#new'
+  end
+
+  # root :to => 'posts#following'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

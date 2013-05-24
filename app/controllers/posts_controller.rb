@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def following
     @posts = Post.all
     @title = 'Dashboard'
