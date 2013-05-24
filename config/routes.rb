@@ -1,12 +1,18 @@
 Cnoofy::Application.routes.draw do
   devise_for :users
 
+  # resources :posts
+
+  resources :blogs do
+    resources :posts
+  end
+
   resources :posts
 
-
-  resources :blogs
+  match '/' => 'blogs#show', :constraints => { :subdomain => /.+/ }
 
   root :to => 'posts#following'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
