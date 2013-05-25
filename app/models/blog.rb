@@ -4,4 +4,11 @@ class Blog < ActiveRecord::Base
   has_many :posts
   belongs_to :user
 
+  before_create :lowercase_subdomain
+
+  private
+  def lowercase_subdomain
+    self.subdomain.downcase!
+  end
+
 end
