@@ -1,7 +1,7 @@
 Cnoofy::Application.routes.draw do
   devise_for :users
 
-  # resources :posts
+  get '/new/link', :to => 'link_posts#new'
 
   resources :blogs do
     resources :posts

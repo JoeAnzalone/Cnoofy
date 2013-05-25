@@ -61,5 +61,9 @@ module Cnoofy
 
     # Required for Devise on Heroku
     config.assets.initialize_on_precompile = false
+
+    # Load Subfolder Models
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
+    
   end
 end
