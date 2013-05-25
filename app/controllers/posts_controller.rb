@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-
+    @blog = current_user.blogs.first
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
