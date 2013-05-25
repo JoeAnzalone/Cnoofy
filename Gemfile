@@ -9,7 +9,6 @@ gem 'sqlite3', :group => :development
 gem 'pg',      :group => :production
 
 gem 'devise'
-
 gem 'bootstrap-sass', '~> 2.3.1.0'
 
 # Gems used only for assets and not required
