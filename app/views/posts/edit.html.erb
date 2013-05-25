@@ -1,6 +1,6 @@
 <h1>Editing post</h1>
 
-<%= render 'form' %>
+<%= render "posts/forms/#{@post.type}" %>
 
 <%= link_to 'Show', [@post.blog, @post] %> |
 <%= link_to 'Back', blog_posts_path %>

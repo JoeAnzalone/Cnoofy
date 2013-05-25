@@ -1,7 +1,7 @@
 Cnoofy::Application.routes.draw do
   devise_for :users
 
-  get '/new/link', :to => 'link_posts#new'
+  get  '/new/:type', :to => 'posts#new', :as => :new_post
 
   resources :blogs do
     resources :posts
@@ -9,7 +9,7 @@ Cnoofy::Application.routes.draw do
 
   resources :posts
 
-  match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }
+  match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }, :as => :blog_front
 
   authenticated :user do
     root :to => "posts#following"

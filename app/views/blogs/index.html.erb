@@ -16,7 +16,7 @@
     <td><%= blog.title %></td>
     <td><%= blog.description %></td>
     <td class="actions">
-      <%= link_to 'Show', blog, :class => 'show' %>
+      <%= link_to 'Show', blog, :class => 'permalink' %>
       <%= link_to 'Edit', edit_blog_path(blog), :class => 'edit' %>
       <%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
     </td>

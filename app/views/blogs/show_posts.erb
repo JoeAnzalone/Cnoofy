@@ -1,22 +1,4 @@
 <h1 class="blog-title"><%= @blog.title %></h1>
 <h2 class="blog-description"><%= @blog.description %></h2>
 
-<% @posts.each do |post| %>
-  <article>
-    <header class="entry-header">
-      <h1><%= post.title %></h1>
-    </header>
-    <div class="entry-content"><%= post.body %></div>
-    <!-- 
-        <ul class="actions">
-          <li><%= link_to 'Show', [post.blog, post], :class => 'show-link' %></li>
-          <li><%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %></li>
-          <li><%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %></li>
-        </ul>
-    -->
-    <footer class="entry-meta">
-      <div class="tags"><%= post.tags %></div>
-    </footer>
-
-  </article>
-<% end %>
+<%= render "posts/list" %>

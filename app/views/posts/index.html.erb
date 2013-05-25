@@ -1,27 +1,5 @@
 <h1><%= @title %></h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Tags</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= render 'new_post_links' %>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= post.tags %></td>
-    <td class="actions">
-      <%= link_to 'Show', [post.blog, post], :class => 'show' %>
-      <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %>
-      <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
-    </td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to 'New Post', new_blog_post_path, :class => 'new post' %>
+<%= render 'list' %>

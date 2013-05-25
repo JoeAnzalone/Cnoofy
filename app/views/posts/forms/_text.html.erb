@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :type, :value => @post.type %>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>

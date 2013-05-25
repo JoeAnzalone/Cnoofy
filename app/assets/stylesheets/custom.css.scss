@@ -65,3 +65,29 @@ nav ul {
   font-size: 1em;
   margin-top: 0;
 }
+
+.new-post-links {
+  @extend .btn-group;
+  & a {
+    @extend .btn;
+  }
+}
+
+.posts {
+  max-width: 625px;
+  margin: 0 auto;
+}
+
+.post {
+  border: 1px solid #CCC;
+  border-radius: 0.2em;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.chat-content .line {
+  min-height: 1.4em;
+  &:nth-child(even) {
+    background: #ddd;
+  }
+}

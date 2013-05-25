@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @blog  = Blog.find(request[:blog_id])
-    @posts = @blog.posts
+    @posts = @blog.posts.order("created_at DESC")
     @title = 'All Posts'
 
     respond_to do |format|
@@ -16,11 +16,11 @@ class PostsController < ApplicationController
   end
 
   def following
-    @posts = Post.all
+    @posts = Post.order("created_at DESC")
     @title = 'Dashboard'
-
+    @blog = current_user.blogs.first
     respond_to do |format|
-      format.html { render 'dashboard' } # index.html.erb
+      format.html { render 'index' }
       format.json { render json: @posts }
     end
   end
@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    @post.type = params[:type]
     @blog = current_user.blogs.first
     respond_to do |format|
       format.html # new.html.erb
@@ -50,14 +51,14 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @blog = @post.blog
   end
 
   # POST /posts
   # POST /posts.json
   def create
     @blog = Blog.find(params[:blog_id])
-    @post = Post.new(params[:post])
-    
+    @post = Post.new(params[:post])    
     @post.blog_id = @blog.id
 
     respond_to do |format|
@@ -98,4 +99,5 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

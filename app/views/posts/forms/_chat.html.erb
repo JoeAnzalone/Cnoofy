@@ -11,16 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :url, 'URL' %>
-    <%= f.text_field :url %>
-  </div>
+  <%= f.hidden_field :type, :value => @post.type %>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :caption %>
+    <%= f.label :body %>
     <%= f.text_area :body %>
   </div>
   <div class="field">

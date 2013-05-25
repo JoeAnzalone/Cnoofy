@@ -1,0 +1,12 @@
+<div class="post" id="post-<%= post.id %>">
+  <%= link_to post.blog.subdomain, blog_front_path %>
+  <%= render :partial => "posts/single_content/#{post.type}", :locals => {:post => post} %>
+<% if post.tags? %><div class="tags">Tagged: <%= post.tags %></div><% end %>
+
+<div class="actions">
+  <%= link_to 'Show', [post.blog, post], :class => 'permalink' %>
+  <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %>
+  <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+</div>
+
+</div>

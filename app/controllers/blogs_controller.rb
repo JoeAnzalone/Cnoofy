@@ -23,7 +23,7 @@ class BlogsController < ApplicationController
 
   def show_posts
     @blog  = Blog.find_by_subdomain!(request.subdomain)
-    @posts = @blog.posts
+    @posts = @blog.posts.order("created_at DESC")
 
     respond_to do |format|
       format.html { render :layout => 'blog' }

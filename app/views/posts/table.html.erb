@@ -6,6 +6,8 @@
     <th>Body</th>
     <th>Tags</th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @posts.each do |post| %>
@@ -14,7 +16,7 @@
     <td><%= post.body %></td>
     <td><%= post.tags %></td>
     <td class="actions">
-      <%= link_to 'Show', [post.blog, post], :class => 'show' %>
+      <%= link_to 'Show', [post.blog, post], :class => 'permalink' %>
       <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %>
       <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
     </td>
@@ -22,4 +24,4 @@
 <% end %>
 </table>
 
-<%= link_to 'New Post', new_blog_post_path(:blog_id => current_user.blogs.first), :class => 'new post' %>
+<%= link_to 'New Post', new_blog_post_path, :class => 'new post' %>

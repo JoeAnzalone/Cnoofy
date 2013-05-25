@@ -1,3 +1,0 @@
-class LinkPostsController < PostsController
-  
-end

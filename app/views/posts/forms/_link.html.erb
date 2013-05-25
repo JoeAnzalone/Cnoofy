@@ -1,0 +1,35 @@
+<%= form_for([@blog, @post], :url=>blog_posts_path(@blog)) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :type, :value => @post.type %>
+
+  <div class="field">
+    <%= f.label :url, 'URL' %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %>
+    <%= f.text_area :body %>
+  </div>
+  <div class="field">
+    <%= f.label :tags %>
+    <%= f.text_field :tags %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
