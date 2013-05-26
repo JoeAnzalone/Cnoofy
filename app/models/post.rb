@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :type, :body, :tags, :title, :url
+  attr_accessible :type, :body, :tags, :title, :url, :quote_source
   belongs_to :blog
   
   # Disable single table inheritance
