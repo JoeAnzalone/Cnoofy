@@ -4,7 +4,9 @@
 
   <%= render :partial => "posts/single_content/#{post.type}", :locals => {:post => post} %>
 
-  <% if post.tags? %><div class="tags">Tagged: <%= post.tags %></div><% end %>
+  <% if !post.tag_list.empty? %>
+    <div class="tags">Tagged: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></div>
+  <% end %>
 
   <div class="actions">
     <%= link_to 'Show', [post.blog, post], :class => 'permalink' %>

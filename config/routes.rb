@@ -9,6 +9,8 @@ Cnoofy::Application.routes.draw do
 
   resources :posts
 
+  get 'tagged/:tag', to: 'posts#index', as: :tag
+
   match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }, :as => :blog_front
 
   authenticated :user do

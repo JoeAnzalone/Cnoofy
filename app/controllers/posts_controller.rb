@@ -5,9 +5,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @blog  = Blog.find(request[:blog_id])
-    @posts = @blog.posts.order("created_at DESC")
-    @title = 'All Posts'
+
+    if ( request[:blog_id] ) then
+      @blog  = Blog.find(request[:blog_id])
+      @posts = @blog.posts.order("created_at DESC")
+      @title = 'All Posts'
+    elsif ( request[:tag] ) then
+      @posts = Post.tagged_with(params[:tag]).order("created_at DESC")
+      @title = "Posts tagged '#{params[:tag]}'"
+    end
 
     respond_to do |format|
       format.html # index.html.erb

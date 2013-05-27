@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
-  attr_accessible :type, :body, :tags, :title, :url, :quote_source
+  attr_accessible :type, :body, :title, :tag_list, :url, :quote_source
   belongs_to :blog
-  
+  acts_as_taggable
+
   # Disable single table inheritance
   self.inheritance_column = nil
 
