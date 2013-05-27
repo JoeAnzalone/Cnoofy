@@ -102,7 +102,7 @@ class PostsController < ApplicationController
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to blog_posts_url, notice: 'Post was successfully deleted.' }
       format.json { head :no_content }
     end
   end
