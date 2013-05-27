@@ -32,6 +32,15 @@ class Post < ActiveRecord::Base
 
   end
 
+  validate :require_photo_source, :unless => Proc.new { type != 'photo' }
+  private
+  def require_photo_source
+    puts attachment.to_yaml
+    if attachment.blank? && remote_attachment_url.blank?
+      errors.add(:base, "Please specify at least one image")
+    end
+  end
+
   # Prepend URLs with "http://" if they don't already include a protocol
   # http://stackoverflow.com/a/7908693
   protected
