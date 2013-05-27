@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   # Disable single table inheritance
   self.inheritance_column = nil
 
+  before_validation :smart_add_url_protocol
+
   def chat_lines
     body.lines
   end
@@ -18,4 +20,24 @@ class Post < ActiveRecord::Base
     lines += '</div>'
     lines.html_safe
   end
+
+  def embed_code
+    begin
+      oembed_response = OEmbed::Providers.get(url)
+      oembed_response.html.html_safe
+    rescue
+      'Sorry, no media found!'
+    end
+
+  end
+
+  # Prepend URLs with "http://" if they don't already include a protocol
+  # http://stackoverflow.com/a/7908693
+  protected
+  def smart_add_url_protocol
+    unless self.url[/^http:\/\//] || self.url[/^https:\/\//]
+      self.url = 'http://' + self.url
+    end
+  end
+
 end

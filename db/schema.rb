@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130527042303) do
+ActiveRecord::Schema.define(:version => 20130527061619) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subdomain"
@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(:version => 20130527042303) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "blog_id"
     t.string   "type"
     t.string   "url"
     t.string   "quote_source"
+    t.string   "embed_code_raw"
   end
 
   create_table "taggings", :force => true do |t|

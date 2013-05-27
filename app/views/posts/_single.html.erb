@@ -1,4 +1,4 @@
-<div class="post" id="post-<%= post.id %>">
+<div class="post <%= post.type %>" id="post-<%= post.id %>">
   
   <%= link_to post.blog.subdomain, blog_front_url(:host => with_subdomain(post.blog.subdomain)) %>
 
