@@ -1,4 +1,4 @@
-<%= form_for([@blog, @post]) do |f| %>
+<%= form_for [@blog, @post], :html => {:multipart => true} do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -14,12 +14,16 @@
   <%= f.hidden_field :type, :value => @post.type %>
 
   <div class="field">
-    <%= f.label :body, "Quote" %>
-    <%= f.text_area :body %>
+    <%= f.label :attachment, 'Choose photo' %>
+    <%= f.file_field :attachment %>
   </div>
   <div class="field">
-    <%= f.label :quote_source, "Source" %>
-    <%= f.text_area :quote_source %>
+    <%= f.label :remote_attachment_url, "or fetch via URL" %>
+    <%= f.text_field :remote_attachment_url %>
+  </div>
+  <div class="field">
+    <%= f.label :body, "Caption" %>
+    <%= f.text_area :body %>
   </div>
   <div class="field">
     <%= f.label :tag_list, "Tags" %>

@@ -35,6 +35,9 @@ GEM
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
+    carrierwave (0.8.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -90,6 +93,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    rmagick (2.13.2)
     ruby-oembed (0.8.8)
     sass (3.2.9)
     sass-rails (3.2.6)
@@ -120,11 +124,13 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on
   bootstrap-sass (~> 2.3.1.0)
+  carrierwave
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
   pg
   rails (= 3.2.13)
+  rmagick
   ruby-oembed
   sass-rails (~> 3.2.3)
   sqlite3

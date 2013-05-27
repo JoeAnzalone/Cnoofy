@@ -10,6 +10,8 @@ gem 'pg',      :group => :production
 
 gem 'devise'
 gem 'acts-as-taggable-on'
+gem "rmagick"
+gem "carrierwave"
 gem 'ruby-oembed'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 
