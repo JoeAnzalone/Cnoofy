@@ -5,6 +5,7 @@ Cnoofy::Application.routes.draw do
 
   resources :blogs do
     resources :posts
+    match 'settings' => 'blogs#edit'
   end
 
   resources :posts

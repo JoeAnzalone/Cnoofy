@@ -44,7 +44,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/1/edit
   def edit
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find(params[:blog_id])
   end
 
   # POST /blogs
@@ -70,7 +70,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
-        format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to blog_settings_path(@blog), notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -90,4 +90,5 @@ class BlogsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

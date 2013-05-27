@@ -1,7 +1,9 @@
 <div class="post <%= post.type %>" id="post-<%= post.id %>">
   
-  <%= link_to post.blog.subdomain, blog_front_url(:host => with_subdomain(post.blog.subdomain)) %>
+  <%= link_to post.blog.avatar, blog_front_url(:host => with_subdomain(post.blog.subdomain)) %>
 
+  <%= link_to post.blog.subdomain, blog_front_url(:host => with_subdomain(post.blog.subdomain)) %>
+  
   <%= render :partial => "posts/single_content/#{post.type}", :locals => {:post => post} %>
 
   <% if !post.tag_list.empty? %>
