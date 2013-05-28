@@ -30,6 +30,10 @@ button {
   @extend .btn;
 }
 
+input[type="submit"] {
+  @extend .btn-primary;
+}
+
 table {
   @extend .table, .table-striped, .table-hover;
 }
@@ -46,8 +50,8 @@ td.actions .destroy {
   @extend .btn, .btn-primary;
 }
 
-input[type="submit"] {
-  @extend .btn-primary;
+form .delete-account {
+  @extend .btn, .btn-danger
 }
 
 input[type="file"] {
