@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
+gem "nifty-generators", :group => :development
 gem 'sqlite3', :group => :development
 gem 'pg',      :group => :production
 
@@ -42,3 +43,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

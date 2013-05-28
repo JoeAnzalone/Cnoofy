@@ -1,0 +1,9 @@
+<h1>Your Subscriptions</h1>
+<% for subscription in @subscriptions %>
+  <ul>
+    <li>
+      <%= link_to subscription.blog.subdomain, blog_url(subscription.blog) %>
+      <%= follow_button subscription.blog %>
+    </li>
+  </ul>
+<% end %>

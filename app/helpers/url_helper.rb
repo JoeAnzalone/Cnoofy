@@ -14,4 +14,8 @@ module UrlHelper
     super
   end
 
+  def blog_url(blog)
+    blog_front_url(:host => with_subdomain(blog.subdomain))
+  end
+
 end

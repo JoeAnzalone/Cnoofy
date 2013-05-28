@@ -1,4 +1,5 @@
 Cnoofy::Application.routes.draw do
+
   devise_for :users
 
   get  '/new/:type', :to => 'posts#new', :as => :new_post
@@ -7,6 +8,8 @@ Cnoofy::Application.routes.draw do
     resources :posts
     match 'settings' => 'blogs#edit'
   end
+
+  resources :following, :controller => 'subscriptions', :as => :subscriptions
 
   resources :posts
 

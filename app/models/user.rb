@@ -12,8 +12,11 @@ class User < ActiveRecord::Base
   attr_accessor :username
 
   has_many :blogs
+  has_many :subscriptions
+  has_many :subscribed_blogs, :through => :subscriptions, :source => :blog
+  has_many :subscribed_posts, :through => :subscribed_blogs, :source => :posts
   after_create :create_user_blog
-
+  
   private
   def create_user_blog
     # build default profile instance. Will use default params.

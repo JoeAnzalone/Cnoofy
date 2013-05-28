@@ -19,6 +19,12 @@ body {
   margin: 1em auto;
 }
 
+#blog-toolbar {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
 input[type="submit"],
 button {
   @extend .btn;
@@ -99,4 +105,17 @@ nav ul {
 .video iframe {
   max-width: 100%;
   height: 340px;
+}
+
+.follow,
+.unfollow {
+  @extend .btn, .btn-mini
+}
+
+.follow {
+  @extend .btn-success
+}
+
+.unfollow {
+  @extend .btn-danger
 }

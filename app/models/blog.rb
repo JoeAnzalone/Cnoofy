@@ -2,12 +2,13 @@ class Blog < ActiveRecord::Base
   attr_accessible :description, :subdomain, :title, :attachment
 
   has_many :posts
+  has_many :subscriptions
   belongs_to :user
 
   mount_uploader :attachment, AttachmentUploader
 
   before_create :lowercase_subdomain
-
+  
   def avatar(options = {:size => :square_50})
     if self.attachment_url
       img_url = self.attachment_url(options[:size]).to_s

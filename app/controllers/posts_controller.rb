@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_filter :authenticate_user!, :only => [:following]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /posts
   # GET /posts.json
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def following
-    @posts = Post.order("created_at DESC")
+    @posts = current_user.subscribed_posts.order("created_at DESC").flatten
     @title = 'Dashboard'
     @blog = current_user.blogs.first
     respond_to do |format|
