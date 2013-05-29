@@ -36,19 +36,19 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :medium do
+  version :medium, :if => :image? do
     process :resize_to_limit => [600, 700]
   end
 
-  version :square_25 do
+  version :square_25, :if => :image? do
     process :resize_to_limit => [25, 25]
   end
 
-  version :square_50 do
+  version :square_50, :if => :image? do
     process :resize_to_limit => [50, 50]
   end
 
-  version :square_100 do
+  version :square_100, :if => :image? do
     process :resize_to_limit => [100, 100]
   end
 
@@ -63,5 +63,12 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  # http://stackoverflow.com/a/7532559
+  # https://github.com/carrierwaveuploader/carrierwave/wiki/How-to%3A-Do-conditional-processing
+  protected
+  def image?(new_file)
+    new_file.content_type.start_with? 'image'
+  end
 
 end
