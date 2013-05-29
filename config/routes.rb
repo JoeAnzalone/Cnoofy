@@ -3,6 +3,8 @@ Cnoofy::Application.routes.draw do
   devise_for :users
 
   get  '/new/:type', :to => 'posts#new', :as => :new_post
+  
+  resources :posts
 
   resources :blogs do
     resources :posts
@@ -11,11 +13,10 @@ Cnoofy::Application.routes.draw do
 
   resources :following, :controller => 'subscriptions', :as => :subscriptions
 
-  resources :posts
 
   get 'tagged/:tag', to: 'posts#index', as: :tag
 
-  match '/' => 'blogs#show_posts', :constraints => { :subdomain => /.+/ }, :as => :blog_front
+  match '' => 'blogs#show_posts', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
 
   authenticated :user do
     root :to => "posts#following"

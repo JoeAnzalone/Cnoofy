@@ -14,7 +14,7 @@
 <header class="masthead site-header" role="banner">
   <hgroup>
     <h1 class="site-title">
-      <%= link_to 'Cnoofy', :root, :rel => 'home' %>
+      <%= link_to 'Cnoofy', root_url(:subdomain => false), :rel => 'home' %>
     </h1>
     <h2 class="site-description">Blogs for people</h2>
   </hgroup>
@@ -29,7 +29,7 @@
   </div>
 </header>
 
-<%= yield %>
+<div class="main"><%= yield %></div>
 
 </div>
 

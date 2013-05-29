@@ -11,7 +11,10 @@
 <body>
 <div id="page">
 
-<%= yield %>
+<h1 class="blog-title"><%= link_to @blog.title, blog_url(@blog) %></h1>
+<h2 class="blog-description"><%= @blog.description %></h2>
+
+<div class="main"><%= yield %></div>
 
 </div>
 <div id="blog-toolbar"><%= follow_button @blog %></div>

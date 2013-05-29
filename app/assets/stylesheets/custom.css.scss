@@ -38,14 +38,6 @@ table {
   @extend .table, .table-striped, .table-hover;
 }
 
-td.actions a {
-  @extend .btn;
-}
-
-td.actions .destroy {
-  @extend .btn-danger;
-}
-
 .new {
   @extend .btn, .btn-primary;
 }
@@ -87,7 +79,7 @@ nav ul {
   }
 }
 
-.posts {
+.main {
   max-width: 625px;
   margin: 0 auto;
 }
@@ -122,4 +114,8 @@ nav ul {
 
 .unfollow {
   @extend .btn-danger
+}
+
+div.github-fork-ribbon {
+  background-color: $linkColor;
 }

@@ -5,14 +5,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-
     if ( request[:blog_id] ) then
       @blog  = Blog.find(request[:blog_id])
       @posts = @blog.posts.order("created_at DESC")
-      @title = 'All Posts'
+      @title = "#{@blog.subdomain}'s Posts"
     elsif ( request[:tag] ) then
-      @posts = Post.tagged_with(params[:tag]).order("created_at DESC")
       @title = "Posts tagged '#{params[:tag]}'"
+      @posts = Post.tagged_with(params[:tag]).order("created_at DESC")
     end
 
     respond_to do |format|
@@ -22,8 +21,8 @@ class PostsController < ApplicationController
   end
 
   def following
-    @posts = current_user.subscribed_posts
     @title = 'Dashboard'
+    @posts = current_user.subscribed_posts
     @blog = current_user.blogs.first
     respond_to do |format|
       format.html { render 'index' }
@@ -34,10 +33,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @blog = Blog.find_by_subdomain(request.subdomain) || Blog.find(params[:blog_id])
+    @post = @blog.posts.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render :layout => 'blog' }
       format.json { render json: @post }
     end
   end
@@ -106,5 +106,4 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 end
