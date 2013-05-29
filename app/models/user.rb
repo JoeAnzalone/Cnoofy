@@ -14,9 +14,13 @@ class User < ActiveRecord::Base
   has_many :blogs
   has_many :subscriptions
   has_many :subscribed_blogs, :through => :subscriptions, :source => :blog
-  has_many :subscribed_posts, :through => :subscribed_blogs, :source => :posts
   after_create :create_user_blog
   
+  def subscribed_posts
+    blogs = [subscribed_blogs, self.blogs.first].flatten
+    Post.find_all_by_blog_id( blogs, :order => "created_at DESC" ).flatten
+  end
+
   private
   def create_user_blog
     # build default profile instance. Will use default params.

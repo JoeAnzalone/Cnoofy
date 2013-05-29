@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def following
-    @posts = current_user.subscribed_posts.order("created_at DESC").flatten
+    @posts = current_user.subscribed_posts
     @title = 'Dashboard'
     @blog = current_user.blogs.first
     respond_to do |format|
