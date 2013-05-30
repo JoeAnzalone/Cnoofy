@@ -47,6 +47,12 @@ class User < ActiveRecord::Base
     roles.include? role.to_s
   end
 
+  # Always remember the logged-in user even after closing the browser
+  # https://github.com/plataformatec/devise/issues/1513#issuecomment-3231691
+  def remember_me
+    true
+  end
+
   private
   def create_user_blog
     # build default profile instance. Will use default params.
