@@ -33,6 +33,11 @@ class BlogsController < ApplicationController
     end
   end
 
+  def followers
+    @blog = Blog.find(params[:blog_id])
+    @followers = Subscription.find_all_by_blog_id(@blog.id).map(&:user)
+  end
+
   # GET /blogs/new
   # GET /blogs/new.json
   def new

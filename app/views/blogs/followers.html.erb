@@ -1,0 +1,16 @@
+<h1><%= @blog.subdomain %> has <%= pluralize @followers.count, 'follower' %></h1>
+
+<% if !@followers.empty? %>
+
+  <ul>
+    <% @followers.each do |follower| %>
+    <li>
+      <%= link_to follower.blogs.first.subdomain, blog_url(follower.blogs.first) %>
+      <%= follow_button follower.blogs.first %>
+    </li>
+    <% end %>
+  </ul>
+
+<% else %>
+  <p>This blog has no followers!</p>
+<% end %>
