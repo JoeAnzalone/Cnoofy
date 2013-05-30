@@ -11,9 +11,16 @@
   <% end %>
 
   <div class="actions">
-    <%= link_to 'Show', post_url(post, :subdomain => post.blog.subdomain), :class => 'permalink' %> /
-    <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %> /
-    <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+    <%= link_to 'Show', post_url(post, :subdomain => post.blog.subdomain), :class => 'permalink' %>
+
+    <% if can? :update, post %>
+       / <%= link_to 'Edit', edit_blog_post_path(post.blog, post), :class => 'edit' %>
+    <% end %>
+
+    <% if can? :destroy, post %>
+      / <%= link_to 'Destroy', [post.blog, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => 'destroy' %>
+    <% end %>
+
   </div>
 
 </div>

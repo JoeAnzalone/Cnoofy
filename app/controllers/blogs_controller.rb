@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /blogs
   # GET /blogs.json
   def index

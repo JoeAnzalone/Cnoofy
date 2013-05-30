@@ -8,6 +8,7 @@ gem 'pg',      :group => :production
 
 gem 'figaro'
 gem 'devise'
+gem 'cancan'
 gem 'acts-as-taggable-on'
 gem 'rmagick'
 gem 'fog'

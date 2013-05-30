@@ -6,19 +6,45 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
-  # attr_accessible :title, :body
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :roles
 
   attr_accessor :username
+
+  ROLES = %w[admin moderator featured banned]
+
+  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0"} }
 
   has_many :blogs
   has_many :subscriptions
   has_many :subscribed_blogs, :through => :subscriptions, :source => :blog
+
   after_create :create_user_blog
   
   def subscribed_posts
     blogs = [subscribed_blogs, self.blogs.first].flatten
     Post.find_all_by_blog_id( blogs, :order => "created_at DESC" ).flatten
+  end
+
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
+  end
+
+  def add_role(role)
+    self.roles = roles.push(role.to_s)
+  end
+
+  def remove_role(role)
+    self.roles = roles - [role.to_s]
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def role?(role)
+    roles.include? role.to_s
   end
 
   private
@@ -39,6 +65,5 @@ class User < ActiveRecord::Base
   def build_blog
     b = self.blogs.create :subdomain => username, :title => "#{username}'s Blog", :description => 'Welcome to my blog!'
   end
-
 
 end
