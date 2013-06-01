@@ -9,13 +9,10 @@ class Post < ActiveRecord::Base
 
   before_validation :smart_add_url_protocol
 
-  def chat_lines
-    body.lines
-  end
-
   def chat_html
     lines = '<div class="chat-content">'
-    chat_lines.each { |line|
+    body.lines.each { |line|
+      line.gsub!(/(.*):(.*)/) {"<span class=\"speaker\">#{$1}:</span> #{$2}"}
       lines += '<div class="line">' + line + '</div>'
     }
     lines += '</div>'
@@ -29,7 +26,6 @@ class Post < ActiveRecord::Base
     rescue
       'Sorry, no media found!'
     end
-
   end
 
   validate :require_photo_source, :unless => Proc.new { type != 'photo' }

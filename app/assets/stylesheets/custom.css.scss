@@ -96,6 +96,10 @@ nav ul {
   &:nth-child(even) {
     background: #ddd;
   }
+
+  .speaker {
+    font-weight: bold;
+  }
 }
 
 .video iframe {
