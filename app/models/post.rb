@@ -1,6 +1,9 @@
 class Post < ActiveRecord::Base
   attr_accessible :type, :body, :title, :tag_list, :attachment, :remote_attachment_url, :url, :quote_source
+  
   belongs_to :blog
+  has_and_belongs_to_many :liked_by, :join_table => 'likes', :class_name => 'User'
+  
   acts_as_taggable
   mount_uploader :attachment, AttachmentUploader
 

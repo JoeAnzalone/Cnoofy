@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530025528) do
+ActiveRecord::Schema.define(:version => 20130601032529) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subdomain"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(:version => 20130530025528) do
     t.integer  "user_id"
     t.string   "attachment"
   end
+
+  create_table "likes", :id => false, :force => true do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+  end
+
+  add_index "likes", ["post_id", "user_id"], :name => "index_likes_on_post_id_and_user_id"
+  add_index "likes", ["user_id", "post_id"], :name => "by_post_and_user", :unique => true
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"

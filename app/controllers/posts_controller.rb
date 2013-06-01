@@ -106,4 +106,22 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def like
+    @post = Post.find(params[:post_id])
+    current_user.likes << @post
+    respond_to do |format|
+      format.html { redirect_to blog_post_path(@post.blog, @post), notice: 'Post was successfully liked.' }
+      format.json { render json: @post }
+    end
+  end
+
+  def unlike
+    @post = Post.find(params[:post_id])
+    current_user.likes.delete(@post)
+    respond_to do |format|
+      format.html { redirect_to blog_post_path(@post.blog, @post), notice: 'Post was successfully unliked.' }
+      format.json { render json: @post }
+    end
+  end
 end

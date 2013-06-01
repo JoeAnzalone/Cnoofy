@@ -15,7 +15,7 @@ class Ability
       # end
     
       can :create, Blog
-      can :create, Post
+      can [:create, :like, :unlike], Post
       can :create, Subscription
       
       can :manage, Blog do |blog|
