@@ -1,4 +1,7 @@
 <%
+
+return unless current_user.present?
+
 if current_user.likes.include?(post)
   like_display   = :none
   unlike_display = :inline
