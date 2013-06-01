@@ -1,0 +1,13 @@
+<%
+if current_user.likes.include?(post)
+  like_display   = :none
+  unlike_display = :inline
+else
+  like_display   = :inline
+  unlike_display = :none
+end
+%>
+
+<%= link_to 'Like', post_like_path(post), :method => :put, :remote => true, :class => 'like-unlike like', :style => "display: #{like_display};" %>
+
+<%= link_to 'Unlike', post_unlike_path(post), :method => :delete, :remote => true, :class => 'like-unlike unlike', :style => "display: #{unlike_display};" %>

@@ -17,7 +17,6 @@ Cnoofy::Application.routes.draw do
 
   resources :following, :controller => 'subscriptions', :as => :subscriptions
 
-
   get 'tagged/:tag', to: 'posts#index', as: :tag
 
   match '' => 'blogs#show_posts', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
@@ -29,8 +28,6 @@ Cnoofy::Application.routes.draw do
   devise_scope :user do
     get '/', :to => 'devise/registrations#new'
   end
-
-  # root :to => 'posts#following'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -84,8 +81,4 @@ Cnoofy::Application.routes.draw do
   # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

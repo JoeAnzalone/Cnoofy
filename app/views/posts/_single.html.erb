@@ -13,12 +13,8 @@
   <div class="actions">
     <%= link_to 'Show', post_url(post, :subdomain => post.blog.subdomain), :class => 'permalink' %>
     
-    <% if (can? :like, post) && !current_user.likes.include?(post) %>
-       / <%= link_to 'Like', post_like_path(post), :method => :put, :class => 'like-unlike like' %>
-    <% end %>
-
-    <% if (can? :unlike, post) && current_user.likes.include?(post) %>
-       / <%= link_to 'Unlike', post_unlike_path(post), :method => :delete, :class => 'like-unlike unlike' %>
+    <% if (can? :like, post) %>
+      / <%= render :partial => 'posts/like', :locals => {:post => post} %>
     <% end %>
 
     <% if can? :update, post %>
