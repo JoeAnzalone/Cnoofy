@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
         
     unless user 
-      can :read, :all
+      can :show, [Blog, Post]
       can :show_posts, Blog
     else
       # All registered users
@@ -34,13 +34,14 @@ class Ability
         subscription.try(:user) == user
       end
 
+      # Moderators
       if user.role? :moderator
         can :manage, Blog
         can :manage, Post
         # can :manage, Comment
       end
 
-      # Admins 
+      # Admins
       if user.role? :admin
         can :manage, :all
       end
