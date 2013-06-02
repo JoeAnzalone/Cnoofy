@@ -14,7 +14,7 @@
     <%= link_to 'Show', post_url(post, :subdomain => post.blog.subdomain), :class => 'permalink' %>
     
     <% if (can? :like, post) %>
-      / <%= render :partial => 'posts/like', :locals => {:post => post} %>
+      / <%= like_button post %>
     <% end %>
 
     <% if can? :update, post %>

@@ -1,0 +1,6 @@
+<h1>Your likes</h1>
+<% if @likes.length > 0 %>
+  <%= render :partial => "posts/list", :locals => {:@posts => @likes.map(&:post)} %>
+<% else %>
+  <p>It appears you're hard to please. Why don't like anything? :p</p>
+<% end %>

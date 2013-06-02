@@ -16,6 +16,7 @@ Cnoofy::Application.routes.draw do
   end
 
   resources :following, :controller => 'subscriptions', :as => :subscriptions
+  resources :likes,     :controller => 'likes',         :as => :likes
 
   get 'tagged/:tag', to: 'posts#index', as: :tag
 

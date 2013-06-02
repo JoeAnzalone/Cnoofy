@@ -21,6 +21,7 @@ class Ability
 
       can [:create, :like, :unlike], Post
       can :create, Subscription
+      can :create, Like
 
       can :manage, Blog do |blog|
         blog.try(:user) == user
@@ -32,6 +33,10 @@ class Ability
 
       can :manage, Subscription do |subscription|
         subscription.try(:user) == user
+      end
+
+      can :manage, Like do |like|
+        like.try(:user) == user
       end
 
       # Moderators

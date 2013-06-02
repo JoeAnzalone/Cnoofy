@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   has_many :blogs
   has_many :subscriptions
   has_many :subscribed_blogs, :through => :subscriptions, :source => :blog
-  has_and_belongs_to_many :likes, :join_table => 'likes', :class_name => 'Post'
+  has_many :likes
+  has_many :liked_posts, :through => :likes, :source => :post
 
   after_create :create_user_blog
   
