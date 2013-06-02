@@ -4,10 +4,7 @@ Cnoofy::Application.routes.draw do
 
   get  '/new/:type', :to => 'posts#new', :as => :new_post
   
-  resources :posts do
-    put    'like' => 'posts#like',   :as => :like
-    delete 'like' => 'posts#unlike', :as => :unlike
-  end
+  resources :posts
 
   resources :blogs do
     resources :posts
@@ -15,8 +12,11 @@ Cnoofy::Application.routes.draw do
     match 'followers'
   end
 
-  resources :following, :controller => 'subscriptions', :as => :subscriptions
+  put    'like/:post_id' => 'likes#create',  :as => :like
+  delete 'unlike/:post_id' => 'likes#destroy', :as => :unlike
+  
   resources :likes,     :controller => 'likes',         :as => :likes
+  resources :following, :controller => 'subscriptions', :as => :subscriptions
 
   get 'tagged/:tag', to: 'posts#index', as: :tag
 

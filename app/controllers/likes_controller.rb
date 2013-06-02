@@ -9,15 +9,21 @@ class LikesController < ApplicationController
     @like = current_user.likes.build(:post_id => params[:post_id])
 
     if @like.save
-      redirect_to likes_url, :notice => "Successfully liked."
+    respond_to do |format|
+      format.json { render json: @post }
+      format.html { redirect_to likes_url, :notice => "Successfully liked." }
+    end
     else
       render :action => 'new'
     end
   end
 
   def destroy
-    @like = current_user.likes.find(params[:id])
+    @like = current_user.likes.find_by_post_id(params[:post_id])
     @like.destroy
-    redirect_to likes_url, :notice => "Successfully unliked."
+    respond_to do |format|
+      format.json { render json: @post }
+      format.html { redirect_to likes_url, :notice => "Successfully unliked." }
+    end
   end
 end

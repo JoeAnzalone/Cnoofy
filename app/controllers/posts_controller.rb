@@ -106,19 +106,4 @@ class PostsController < ApplicationController
     end
   end
 
-  def like
-    @post = Post.find(params[:post_id])
-    current_user.likes << @post
-    respond_to do |format|
-      format.json { render json: @post }
-    end
-  end
-
-  def unlike
-    @post = Post.find(params[:post_id])
-    current_user.likes.delete(@post)
-    respond_to do |format|
-      format.json { render json: @post }
-    end
-  end
 end

@@ -1,14 +1,18 @@
 module LikesHelper
-
   def like_button(post)
 
-    if !user_signed_in? || current_user.likes.find_by_post_id(post).nil?
-      link_to "Like", likes_path(:post_id => post), :method => :post, :class => 'like'
+    return unless current_user.present?
+
+    if current_user.likes.find_by_post_id(post)
+      like_display   = :none
+      unlike_display = :inline
     else
-      like = current_user.likes.find_by_post_id(post)
-      link_to "Unlike", like, :confirm => 'Are you sure?', :method => :delete, :class => 'unlike'
+      like_display   = :inline
+      unlike_display = :none
     end
+
+    link_to('Like', like_path(post), :method => :put, :remote => true, :class => 'like-unlike like', :style => "display: #{like_display};") +
+    link_to('Unlike', unlike_path(post), :method => :delete, :remote => true, :class => 'like-unlike unlike', :style => "display: #{unlike_display};")
     
   end
-
 end
