@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @title = 'Dashboard'
     @posts = current_user.subscribed_posts
     @blog = current_user.blogs.first
+    @is_dashboard = true
     respond_to do |format|
       format.html { render 'index' }
       format.json { render json: @posts }

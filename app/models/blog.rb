@@ -9,12 +9,13 @@ class Blog < ActiveRecord::Base
 
   before_create :lowercase_subdomain
   
-  def avatar(options = {:size => :square_50})
+  def avatar(options = {:size => 50})
     if self.attachment_url
-      img_url = self.attachment_url(options[:size]).to_s
+      version = 'square_' + options[:size].to_s
+      img_url = self.attachment_url(version).to_s
     else
       gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-      img_url = "http://gravatar.com/avatar/#{gravatar_id}.png?s=50&d=monsterid"
+      img_url = "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{options[:size]}&d=monsterid"
     end
     ApplicationController.helpers.image_tag img_url
   end

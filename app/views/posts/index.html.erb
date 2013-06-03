@@ -2,4 +2,21 @@
 
 <%= render 'new_post_links' %>
 
+<% if @is_dashboard && current_user.subscribed_blogs.count <= 0 %>
+  <div class="welcome">
+    <h2>Welcome to the dashboard!</h2>
+    <p>This is where all the posts of the blogs you follow would go... IF YOU HAD ANY!</p>
+    <p>Why don't you try following one of these swell blogs?</p>
+    <ul class="featured">
+      <% User.with_role(:featured).each do |u| %>
+        <li>
+          <%= link_to(u.blogs.first.avatar({:size => 100}), blog_url(u.blogs.first), :class => :avatar) %>
+          <%= link_to(u.blogs.first.subdomain, blog_url(u.blogs.first), :class => :subdomain) %>
+          <%= follow_button u.blogs.first %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= render 'list' %>
