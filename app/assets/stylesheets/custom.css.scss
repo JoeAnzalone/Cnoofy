@@ -91,6 +91,31 @@ nav ul {
   border-radius: 0.2em;
   margin: 1em 0;
   padding: 1em;
+
+  blockquote {
+    position: relative;
+    font-size: 1.1em;
+    border-left: 7px solid #ccc;
+    background: rgb(247, 247, 247);
+    padding: 0.2em 0 0.2em 15px;
+    margin: 0;
+    margin-bottom: 0.4em;
+  }
+
+  .quote-source {
+    display: table;
+    font-style: italic;
+    font-size: 0.9em;
+    .sep {
+      display: table-cell;
+      padding: 0 0.4em;
+    }
+
+    .quote-source-content {
+      display: table-cell;
+    }
+  }
+
 }
 
 .chat-content .line {
