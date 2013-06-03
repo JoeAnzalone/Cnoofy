@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @likes = current_user.likes
+    @likes = current_user.likes.order("created_at DESC")
   end
 
   def create

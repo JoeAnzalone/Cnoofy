@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @subscriptions = current_user.subscriptions
+    @subscriptions = current_user.subscriptions.order("created_at DESC")
   end
 
   def create
