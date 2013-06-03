@@ -11,7 +11,7 @@
   <% end %>
 
   <div class="actions">
-    <%= link_to 'Show', post_url(post, :subdomain => post.blog.subdomain), :class => 'permalink' %>
+    <%= link_to 'Show', permalink(post), :class => 'permalink' %>
     
     <% if (can? :like, post) %>
       / <%= like_button post %>
