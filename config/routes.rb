@@ -4,7 +4,9 @@ Cnoofy::Application.routes.draw do
 
   get  '/new/:type', :to => 'posts#new', :as => :new_post
   
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   resources :blogs do
     resources :posts

@@ -1,1 +1,18 @@
 <%= render :partial => "posts/single", :locals => {:post => @post} %>
+
+<h3>Comments</h3>
+
+<% if @post.comments.length > 0 %>
+<ul class="comments">
+  <% @post.comments.each do |c| %>
+    <li>
+      <%= link_to( c.user.blogs.first.avatar({:size => 25}) + c.user.blogs.first.subdomain, blog_url(c.user.blogs.first) ) %> said: <%= c.body %>
+    </li>
+  <% end %>
+</ul>
+
+<% else %>
+
+<p>No comments yet. <%= link_to 'Be the first!', new_post_comment_path(@post) %></p>
+
+<% end %>

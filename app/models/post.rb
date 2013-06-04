@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   
   belongs_to :blog
   has_many :likes
+  has_many :comments
   
   acts_as_taggable
   mount_uploader :attachment, AttachmentUploader

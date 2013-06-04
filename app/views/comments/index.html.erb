@@ -1,0 +1,5 @@
+<% @comments.each do |c| %>
+  <%= c.user.blogs.first.avatar %>
+  <%= c.user.blogs.first.subdomain %>
+  <%= c.body %>
+<% end %>

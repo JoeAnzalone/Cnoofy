@@ -64,7 +64,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @blog = Blog.find(params[:blog_id])
-    @post = Post.new(params[:post])    
+    @post = Post.new(params[:post])
     @post.blog_id = @blog.id
 
     respond_to do |format|

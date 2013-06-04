@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602173341) do
+ActiveRecord::Schema.define(:version => 20130603234729) do
 
   create_table "blogs", :force => true do |t|
     t.string   "subdomain"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20130602173341) do
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
     t.string   "attachment"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "likes", :force => true do |t|

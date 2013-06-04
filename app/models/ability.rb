@@ -12,10 +12,10 @@ class Ability
       can :read, :all
       can :show_posts, Blog
 
-      # can :create, Comment
-      # can :update, Comment do |comment|
-        # comment.try(:user) == user || user.role?(:moderator)
-      # end
+      can :create, Comment
+      can :update, Comment do |comment|
+        comment.try(:user) == user
+      end
 
       can :create, Blog
 
@@ -43,7 +43,7 @@ class Ability
       if user.role? :moderator
         can :manage, Blog
         can :manage, Post
-        # can :manage, Comment
+        can :manage, Comment
       end
 
       # Admins

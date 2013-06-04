@@ -180,3 +180,14 @@ div.github-fork-ribbon {
     padding: 0.2em;
   }
 }
+
+.comments {
+  margin-left: 0;
+  list-style: none;
+  li {
+    &:nth-child(odd) {
+      background: rgba($green, 0.3);
+    }
+
+  }
+}

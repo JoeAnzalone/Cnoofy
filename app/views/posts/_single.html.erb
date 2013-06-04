@@ -15,6 +15,10 @@
     
     <% if (can? :like, post) %>
       / <%= like_button post %>
+    <% end %>  
+
+    <% if (can? :create, Comment) %>
+      / <%= link_to 'Comment', new_post_comment_path(post) %>
     <% end %>
 
     <% if can? :update, post %>
