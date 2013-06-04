@@ -9,15 +9,21 @@ class SubscriptionsController < ApplicationController
     @subscription = current_user.subscriptions.build(:blog_id => params[:blog_id])
 
     if @subscription.save
-      redirect_to subscriptions_url, :notice => "Successfully followed."
+    respond_to do |format|
+      format.json { render json: @subscription }
+      format.html { redirect_to subscriptions_url, :notice => "Successfully followed." }
+    end
     else
       render :action => 'new'
     end
   end
 
   def destroy
-    @subscription = current_user.subscriptions.find(params[:id])
+    @subscription = current_user.subscriptions.find_by_blog_id(params[:blog_id])
     @subscription.destroy
-    redirect_to subscriptions_url, :notice => "Successfully unfollowed."
+    respond_to do |format|
+      format.json { render json: @subscription }
+      format.html { redirect_to subscriptions_url, :notice => "Successfully unfollowed." }
+    end
   end
 end
