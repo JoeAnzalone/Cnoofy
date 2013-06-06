@@ -32,6 +32,7 @@ Cnoofy::Application.routes.draw do
 
   devise_scope :user do
     get '/', :to => 'devise/registrations#new'
+    match 'settings' => 'devise/registrations#edit', :as => :edit_user_registration
   end
 
   # The priority is based upon order of creation:
